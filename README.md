@@ -1,8 +1,8 @@
 # MCP Ableton Server
 
 ## Overview
-The **MCP Ableton Server** is a server implementing the [Model Context Protocol (MCP)](https://modelcontextprotocol.io) to facilitate communication between LLMs and Ableton Live. It uses **OSC (Open Sound Control)** to send and receive messages to/from Ableton Live.
-It is based on [AbletonOSC](https://github.com/ideoforms/AbletonOSC) implementation and exhaustively maps available OSC adresses to tools accessible to MCP clients.
+The **MCP Ableton Server** is a server implementing the [Model Context Protocol (MCP)](https://modelcontextprotocol.io) to facilitate communication between LLMs and **Ableton Live**. It uses **OSC (Open Sound Control)** to send and receive messages to/from Ableton Live.
+It is based on [AbletonOSC](https://github.com/ideoforms/AbletonOSC) implementation and exhaustively maps available OSC adresses to [**tools**](https://modelcontextprotocol.io/docs/concepts/tools) accessible to MCP clients.
 
 This project consists of two main components:
 - `mcp_ableton_server.py`: The MCP server handling the communication between clients and the OSC daemon.
@@ -21,7 +21,7 @@ This project consists of two main components:
 - `fastmcp` (for MCP support)
 
 ### Installation Steps
-1. Installing `uv`
+1. Install `uv`
    ```bash
    pip install uv
    ```
@@ -109,11 +109,11 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for d
 - [python-osc](https://github.com/attwad/python-osc) for OSC handling
 - [AbletonOSC](https://github.com/ideoforms/AbletonOSC) for OSC implementation
 - Ableton Third Party Remote Scripts
-- Julien Bayle @[Structure Void](https://structure-void.com/) for the inspirations
+- Julien Bayle @[Structure Void](https://structure-void.com/) for endless inspirations and resources.
 
 ## TODO
-- Standalone Ableton Live MCP client
 - Explore resources and prompts primitive opportunities.
+- Build a standalone Ableton Live MCP client.
 
 ---
 
