@@ -6,6 +6,7 @@ It is based on [AbletonOSC](https://github.com/ideoforms/AbletonOSC) implementat
 
 
 [![ontrol Ableton Live with LLMs](https://img.youtube.com/vi/12MzsQ3V7cs/hqdefault.jpg)](https://www.youtube.com/watch?v=12MzsQ3V7cs)
+
 This project consists of two main components:
 - `mcp_ableton_server.py`: The MCP server handling the communication between clients and the OSC daemon.
 - `osc_daemon.py`: The OSC daemon responsible for relaying commands to Ableton Live and processing responses.
