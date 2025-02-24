@@ -1,6 +1,6 @@
 # MCP Ableton Server
 
-## Overview
+## 📌 Overview
 The **MCP Ableton Server** is a server implementing the [Model Context Protocol (MCP)](https://modelcontextprotocol.io) to facilitate communication between LLMs and **Ableton Live**. It uses **OSC (Open Sound Control)** to send and receive messages to/from Ableton Live.
 It is based on [AbletonOSC](https://github.com/ideoforms/AbletonOSC) implementation and exhaustively maps available OSC adresses to [**tools**](https://modelcontextprotocol.io/docs/concepts/tools) accessible to MCP clients.
 
@@ -8,13 +8,13 @@ This project consists of two main components:
 - `mcp_ableton_server.py`: The MCP server handling the communication between clients and the OSC daemon.
 - `osc_daemon.py`: The OSC daemon responsible for relaying commands to Ableton Live and processing responses.
 
-## Features
+## ✨ Features
 - Provides an MCP-compatible API for controlling Ableton Live from MCP clients.
 - Uses **python-osc** for sending and receiving OSC messages.
 - Based on the OSC implementation from [AbletonOSC](https://github.com/ideoforms/AbletonOSC).
 - Implements request-response handling for Ableton Live commands.
 
-## Installation
+## ⚡ Installation
 ### Requirements
 - Python 3.8+
 - `python-osc` (for OSC communication)
@@ -34,13 +34,12 @@ This project consists of two main components:
    ```bash
    uv install python-osc fastmcp
    ```
-
-## Usage
-### Installing the MCP Server
-This assumes that you're using [Claude Desktop](https://claude.ai/download)
-```bash
-mcp install mcp_ableton_server.py
-```
+4. Install the MCP Server
+   This assumes that you're using [Claude Desktop](https://claude.ai/download)
+   ```bash
+   mcp install mcp_ableton_server.py
+   ```
+## 🚀 Usage
 
 ### Running the OSC Daemon
 The OSC daemon will handle OSC communication between the MCP server and Ableton Live:
@@ -95,9 +94,6 @@ self.receive_port = 11001
   }
 ```
 
-
-
-
 ## Contributing
 Feel free to submit issues, feature requests, or pull requests to improve this project.
 
@@ -112,7 +108,7 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for d
 - Julien Bayle @[Structure Void](https://structure-void.com/) for endless inspirations and resources.
 
 ## TODO
-- Explore resources and prompts primitive opportunities.
+- Explore *resources* and *prompts* primitives opportunities.
 - Build a standalone Ableton Live MCP client.
 
 ---
