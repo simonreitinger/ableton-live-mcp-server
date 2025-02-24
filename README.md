@@ -1,4 +1,4 @@
-# MCP Ableton Server
+# Ableton LIVE MCP Server
 
 ## 📌 Overview
 The **Ableton Live MCP Server** is a server implementing the [Model Context Protocol (MCP)](https://modelcontextprotocol.io) to facilitate communication between LLMs and **Ableton Live**. It uses **OSC (Open Sound Control)** to send and receive messages to/from Ableton Live.
@@ -22,6 +22,7 @@ This project consists of two main components:
 - Python 3.8+
 - `python-osc` (for OSC communication)
 - `fastmcp` (for MCP support)
+- [AbletonOSC](https://github.com/ideoforms/AbletonOSC) as a control surface
 
 ### Installation Steps
 1. Install `uv`
@@ -42,6 +43,9 @@ This project consists of two main components:
    ```bash
    mcp install mcp_ableton_server.py
    ```
+5. Install AbletonOSC
+   Follow the instructions at [AbletonOSC](https://github.com/ideoforms/AbletonOSC)
+   
 ## 🚀 Usage
 
 ### Running the OSC Daemon
