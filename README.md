@@ -110,7 +110,7 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for d
 ## Acknowledgments
 - [Model Context Protocol (MCP)](https://modelcontextprotocol.io)
 - [python-osc](https://github.com/attwad/python-osc) for OSC handling
-- [AbletonOSC](https://github.com/ideoforms/AbletonOSC) for OSC implementation
+- Daniel John Jones for OSC implementation with [AbletonOSC](https://github.com/ideoforms/AbletonOSC)
 - Ableton Third Party Remote Scripts
 - Julien Bayle @[Structure Void](https://structure-void.com/) for endless inspirations and resources.
 
