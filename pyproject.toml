@@ -1,0 +1,7 @@
+[project]
+name = "ableton-live-mcp-server"
+version = "0.1.0"
+description = "Ableton Live MCP Server"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["fastmcp>=0.4.1", "python-osc>=1.9.3"]
