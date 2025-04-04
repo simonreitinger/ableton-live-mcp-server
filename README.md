@@ -1,5 +1,29 @@
 # Ableton Live MCP Server
 
+## Changes
+
+This fork has been modified to work fully locally with Ollama and pydantic_ai.
+
+In addition to the setup mentioned below you have to run
+
+```bash
+ollama pull llama3.2
+ollama serve
+```
+
+to host the LLM and
+
+
+```python
+uv run main.py
+```
+
+to launch the chatbot.
+
+
+--------
+
+
 ## 📌 Overview
 
 The **Ableton Live MCP Server** is a server implementing the

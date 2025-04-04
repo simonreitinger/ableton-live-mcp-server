@@ -3,7 +3,7 @@ import asyncio
 import json
 import socket
 import sys
-from typing import List, Optional
+from typing import Optional
 
 class AbletonClient:
     def __init__(self, host='127.0.0.1', port=65432):
@@ -14,7 +14,7 @@ class AbletonClient:
         self.responses = {}  # Store futures keyed by (request_id)
         self.lock = asyncio.Lock()
         self._request_id = 0  # compteur pour générer des ids uniques
-        
+
         # Task asynchrone pour lire les réponses
         self.response_task = None
 
@@ -41,7 +41,7 @@ class AbletonClient:
 
                 # Si c'est une réponse JSON-RPC
                 resp_id = msg.get('id')
-                if 'result' in msg or 'error' in msg:
+                if 'result' in msg or 'error' in msg or 'status' in msg:
                     # Réponse à une requête
                     async with self.lock:
                         fut = self.responses.pop(resp_id, None)
@@ -73,7 +73,7 @@ class AbletonClient:
             try:
                 self.sock.connect((self.host, self.port))
                 self.connected = True
-                
+
                 # Start the response reader task
                 self.response_task = asyncio.create_task(self.start_response_reader())
                 return True
@@ -135,11 +135,11 @@ class AbletonClient:
             return {'status': 'error', 'message': str(e)}
     """
     def send_rpc_command_sync(self, method: str, params: dict) -> dict:
-        
+
         # Variante synchrone pour juste envoyer le message
         # et lire UNE réponse immédiatement (fonctionne si
         # le daemon renvoie une unique réponse).
-        
+
         if not self.connected:
             if not self.connect():
                 return {'status': 'error', 'message': 'Not connected'}
@@ -200,11 +200,11 @@ ableton_client = AbletonClient()
 async def get_track_names(index_min: Optional[int] = None, index_max: Optional[int] = None) -> str:
     """
     Get the names of tracks in Ableton Live.
-    
+
     Args:
         index_min: Optional minimum track index
         index_max: Optional maximum track index
-    
+
     Returns:
         A formatted string containing track names
     """
@@ -229,6 +229,41 @@ async def get_track_names(index_min: Optional[int] = None, index_max: Optional[i
         return f"Track Names: {track_names}"
     else:
         return f"Error getting track names: {response.get('message', 'Unknown error')}"
+
+
+# customized tools for better translation
+
+@mcp.tool()
+async def create_midi_track(after_index: Optional[int] = -1) -> dict:
+    params = {"address": "/live/song/create_midi_track", "args": [after_index]}
+    response = await ableton_client.send_rpc_request("send_message", params)
+    return response
+
+@mcp.tool()
+async def create_audio_track(after_index: Optional[int] = -1) -> dict:
+    params = {"address": "/live/song/create_audio_track", "args": [after_index]}
+    response = await ableton_client.send_rpc_request("send_message", params)
+    return response
+
+@mcp.tool()
+async def delete_track(track_index: int) -> dict:
+    params = {"address": "/live/song/delete_track", "args": [track_index]}
+    response = await ableton_client.send_rpc_request("send_message", params)
+    return response
+
+@mcp.tool()
+async def create_clip_on_track(track_index: int, clip_index: int, length: int)  -> dict:
+    params = {"address": "/live/clip_slot/create_clip", "args": [track_index, clip_index, length]}
+    response = await ableton_client.send_rpc_request("send_message", params)
+    return response
+
+@mcp.tool()
+async def add_notes_to_clip(track_index: int, clip_id: int, pitch: int, start_at_beat: float, length_in_beats: Optional[float] = 4, velocity: Optional[int] = 100, mute: Optional[bool] = False) -> dict:
+    params = {"address": "/live/clip/add/notes", "args": [track_index, clip_id, pitch, start_at_beat, length_in_beats, velocity, mute]}
+    response = await ableton_client.send_rpc_request("send_message", params)
+    return response
+
+
 
 if __name__ == "__main__":
     try:

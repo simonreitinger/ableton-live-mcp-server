@@ -27,6 +27,8 @@ env/
 venv/
 ENV/
 .python-version
+.ruff_cache
+.ropeproject
 
 # IDE
 .idea/
